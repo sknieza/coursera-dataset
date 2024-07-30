@@ -55,39 +55,53 @@ The key requirements and dependencies are contained in `requirements.txt` file. 
 This program has two functions for data conversion and outlier detection.
 
 ### value_to_float(x)
+
 Takes a string notation of enrolled student count and converts it to float number
 
 __Parameters__
+
 x : str
+
     The string that contains course student count in format 100k or 3m
 
 __Returns__
+
 x : float
+
     This function returns a floating point value, removing the thousands
     or millions notation in string (k or m) and multiplying the remainder
     digit by 1000 or 1000000 accordingly.
 
 __Notes__
-- This function is used in pandas df.apply() method to change the cell values
+
+This function is used in pandas df.apply() method to change the cell values
 of the feature.
-"""
 
 
 ### def find_outliers(column, method='zscore', threshold=3)
+
 This function detects outliers in a numerical column using a specified method.
 
 __Parameters__
+
 column : pandas.Series
+
     The numerical column to analyze.
+
 method : str, optional 
+
     The method for outlier detection. Defaults to 'zscore'.
     - 'zscore': Uses z-scores (standard deviations from the mean).
     - 'iqr': Uses Interquartile Range (IQR).
+
 threshold : float, optional
+
     The threshold for outlier detection. Defaults to 3.
     - For z-scores, values with absolute value exceeding the threshold are considered outliers.
     - For IQR, values below Q1 - threshold * IQR or above Q3 + threshold * IQR are considered outliers.
 
 __Returns__
+
 pandas.Series
+
     A Series containing True for outliers and False for non-outliers.    
